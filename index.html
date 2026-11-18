@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Платформа взаимного развития без денег: обменивайся навыками в Душанбе и онлайн.">
+<title>SkillSwap — Меняйся знаниями, а не деньгами</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#community">Перейти к участникам</a>
+
+<header id="top">
+ <div class="wrap hd">
+  <a class="logo" href="#how" aria-label="SkillSwap — на главную"><svg width="38" height="26" viewBox="0 0 38 26" fill="none" stroke-width="3" aria-hidden="true"><circle cx="11" cy="13" r="9" stroke="#6a5af0"/><circle cx="27" cy="13" r="9" stroke="#2ed3a0"/></svg>Skill <b>Swap</b></a>
+  <span class="beta">BETA</span>
+  <nav id="mainNav" aria-label="Основное меню">
+   <ul>
+    <li><a href="#how">Как это работает</a></li>
+    <li><a href="#community">Сообщество</a></li>
+    <li><a href="#about">О платформе</a></li>
+   </ul>
+  </nav>
+  <form class="hs" id="hform" role="search">
+   <span aria-hidden="true">🔍︎</span>
+   <input id="hsearch" type="search" placeholder="Найти обмен навыками..." aria-label="Найти обмен навыками">
+   <kbd>⌘K</kbd>
+  </form>
+  <a class="authbtn ghost" id="adminLink" href="/admin" hidden>Админка</a>
+  <button class="authbtn ghost" id="cabBtn" type="button" hidden>👤<span class="cablbl"> Кабинет</span></button>
+  <button class="bell" id="chatBtn" type="button" aria-label="Сообщения" hidden>💬<b id="chatCount" hidden></b></button>
+  <div class="bellwrap"><button class="bell" id="bell" type="button" aria-label="Уведомления" aria-haspopup="true">🔔︎<b id="bellCount" hidden></b></button><div class="bellpanel" id="bellPanel" hidden></div></div>
+  <button class="authbtn" id="loginBtn" type="button">Войти</button>
+  <div class="me" id="me" hidden><span class="av" id="meAv" aria-hidden="true"></span><span id="meName"></span><button class="authbtn ghost" id="logoutBtn" type="button">Выйти</button></div>
+  <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mainNav"><span aria-hidden="true">☰</span></button>
+ </div>
+</header>
+
+<main>
+ <section class="hero" id="how" aria-labelledby="hero-title">
+  <div class="wrap">
+   <p class="pill"><span class="dot" aria-hidden="true"></span>⚡ Платформа взаимного развития без денег <em>PEER 2 PEER</em></p>
+   <h1 id="hero-title">Меняйся <span>знаниями, а не деньгами</span></h1>
+   <p class="sub">Находи единомышленников, делись своими сильными сторонами и осваивай новые навыки в формате дружеского peer-to-peer обмена в Душанбе и онлайн.</p>
+   <search class="sbox">
+    <form class="sform" id="sform">
+     <span aria-hidden="true">🔍︎</span>
+     <input id="q" type="search" placeholder="Какой навык хотите освоить или предложить? (например: Figma, Python...)" aria-label="Поиск навыка">
+     <button class="go" type="submit">Найти<br>обмен ⚙</button>
+    </form>
+    <div class="quick" role="group" aria-label="Быстрый поиск">
+     <span>Быстрый поиск:</span>
+     <button class="chip" type="button">UX/UI Design</button><button class="chip" type="button">Python &amp; AI</button><button class="chip" type="button">Английский C1</button><button class="chip" type="button">3D Blender</button><button class="chip" type="button">Motion Graphics</button>
+    </div>
+   </search>
+   <ul class="stats">
+    <li><span class="dot" aria-hidden="true"></span> <b data-k="members" data-n="1420" data-s="+">1,420+</b> активных участников</li>
+    <li><span aria-hidden="true">⇄</span> <b data-k="swaps" data-n="3850" data-s="+">3,850+</b> успешных обменов</li>
+    <li><span style="color:#fbbf24" aria-hidden="true">★</span> <b data-k="trust" data-n="98" data-s="%">98%</b> рейтинг доверия</li>
+   </ul>
+  </div>
+ </section>
+
+ <section class="wrap" id="community" aria-labelledby="community-title">
+  <h2 class="sr-only" id="community-title">Участники сообщества</h2>
+  <div class="bar" id="tabs" role="group" aria-label="Категории навыков">
+   <button class="tab" type="button" data-c="all">Все навыки</button><button class="tab" type="button" data-c="dev">Разработка</button><button class="tab" type="button" data-c="des" aria-pressed="true">Дизайн &amp; 3D</button><button class="tab" type="button" data-c="lang">Языки</button><button class="tab" type="button" data-c="mkt">Маркетинг</button><button class="tab" type="button" data-c="mus">Музыка</button><button class="tab" type="button" data-c="math">Математика</button><button class="tab" type="button" data-c="other">Другое</button>
+   <label class="sort">☰ Сортировка: <select id="sort"><option value="m">По совпадению (Match %)</option><option value="r">По рейтингу</option><option value="e">По числу обменов</option></select></label>
+  </div>
+  <div class="grid" id="grid" aria-live="polite"></div>
+  <button class="more" id="more" type="button">Показать больше участников ⌄</button>
+ </section>
+</main>
+
+<footer id="about">
+ <div class="wrap">
+  <div class="fg">
+   <div>
+    <a class="logo" href="#how" aria-label="SkillSwap — наверх"><svg width="38" height="26" viewBox="0 0 38 26" fill="none" stroke-width="3" aria-hidden="true"><circle cx="11" cy="13" r="9" stroke="#6a5af0"/><circle cx="27" cy="13" r="9" stroke="#2ed3a0"/></svg>Skill <b>Swap</b></a>
+    <p>Обменивайся знаниями, а не деньгами. Платформа для прозрачного взаимного обучения нового поколения.</p>
+   </div>
+   <section aria-labelledby="f-contacts">
+    <h2 id="f-contacts">Контакты и адрес</h2>
+    <address>
+     <ul>
+      <li><span aria-hidden="true">📍</span> г. Душанбе, ул. Рудаки 120</li>
+      <li><span aria-hidden="true">✉</span> <a href="mailto:support@skillswap.tj">support@skillswap.tj</a></li>
+      <li><span aria-hidden="true">☎</span> <a href="tel:+992446002020">+992 (44) 600-20-26</a></li>
+     </ul>
+    </address>
+   </section>
+   <nav aria-labelledby="f-social">
+    <h2 id="f-social">Социальные сети</h2>
+    <ul class="soc">
+     <li><a href="#">Instagram (@skillswap.tj)</a></li>
+     <li><a href="#">Telegram (t.me/skillswap_tj)</a></li>
+     <li><a href="#">YouTube (SkillSwap Learning)</a></li>
+    </ul>
+   </nav>
+  </div>
+  <div class="fb">
+   <small>© 2026 SkillSwap. All rights reserved.</small>
+   <nav aria-label="Правовая информация">
+    <a href="#">Политика конфиденциальности</a><a href="#">Условия использования</a><a href="#">Кодекс сообщества</a>
+   </nav>
+  </div>
+ </div>
+</footer>
+
+<dialog id="authDlg" aria-labelledby="authTitle">
+ <form id="authForm" novalidate>
+  <button class="x" type="button" id="authClose" aria-label="Закрыть">✕</button>
+  <h2 id="authTitle">Вход</h2>
+  <div class="seg"><button type="button" data-m="login" aria-pressed="true">Вход</button><button type="button" data-m="register" aria-pressed="false">Регистрация</button></div>
+  <label id="nameRow" hidden>Имя<input name="name" autocomplete="name" maxlength="60"></label>
+  <label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+  <label>Пароль<input name="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required></label>
+  <div id="regExtra" hidden>
+   <fieldset class="grp"><legend>Могу научить</legend><div class="cats" id="teachCats"></div><input name="teachSkills" placeholder="Что именно? Например: Figma, Python" maxlength="200"></fieldset>
+   <fieldset class="grp"><legend>Хочу научиться</legend><div class="cats" id="learnCats"></div><input name="learnSkills" placeholder="Что именно? Например: React, английский" maxlength="200"></fieldset>
+  </div>
+  <p class="err" id="authErr" role="alert"></p>
+  <button class="go" id="authSubmit" type="submit">Войти</button>
+ </form>
+</dialog>
+
+<dialog id="cabDlg" aria-labelledby="cabTitle">
+ <div class="cab">
+  <nav class="cabnav" id="cabNav" aria-label="Разделы кабинета">
+   <h2 id="cabTitle">Личный кабинет</h2>
+   <button type="button" data-t="profile" aria-pressed="true">Профиль</button>
+   <button type="button" data-t="swaps" aria-pressed="false">Мои обмены</button>
+   <button type="button" data-t="reviews" aria-pressed="false">Отзывы</button>
+   <button type="button" data-t="recs" aria-pressed="false">Подбор партнёров</button>
+   <button type="button" data-t="ws" aria-pressed="false">Мастер-классы</button>
+   <button type="button" data-t="ach" aria-pressed="false">Достижения</button>
+  </nav>
+  <section class="cabbody"><button class="x" id="cabClose" type="button" aria-label="Закрыть">✕</button><div id="cabContent"></div></section>
+ </div>
+</dialog>
+
+<dialog id="revDlg" aria-labelledby="revTitle">
+ <form id="revForm" novalidate>
+  <h2 id="revTitle">Отзыв</h2>
+  <div class="stars" id="stars" role="group" aria-label="Оценка"><button type="button" data-v="1" aria-label="1 звезда">★</button><button type="button" data-v="2" aria-label="2 звезды">★</button><button type="button" data-v="3" aria-label="3 звезды">★</button><button type="button" data-v="4" aria-label="4 звезды">★</button><button type="button" data-v="5" aria-label="5 звёзд">★</button></div>
+  <label>Комментарий (необязательно)<textarea id="revText" maxlength="500" placeholder="Как прошёл обмен?"></textarea></label>
+  <p class="err" id="revErr" role="alert"></p>
+  <div class="reqbtns"><button type="button" id="revCancel">Отмена</button><button type="submit" id="revSend">Отправить</button></div>
+ </form>
+</dialog>
+
+<dialog id="ringDlg" aria-labelledby="ringName">
+ <div class="ring"><span class="rk">Входящий видеозвонок</span><h2 id="ringName"></h2>
+  <div class="reqbtns"><button type="button" id="ringNo">Отклонить</button><button type="button" id="ringYes">Принять</button></div></div>
+</dialog>
+
+<dialog id="callDlg" aria-label="Видеозвонок">
+ <div class="call"><video id="remoteV" autoplay playsinline></video><video id="localV" autoplay playsinline muted></video><p class="callst" id="callSt" role="status"></p>
+  <div class="callbar"><button type="button" id="callMic">Микрофон</button><button type="button" id="callCam">Камера</button><button type="button" id="callEnd">Завершить</button></div></div>
+</dialog>
+
+<dialog id="chatDlg" aria-labelledby="chatTitle">
+ <div class="chat">
+  <aside class="chatlist" id="chatList" aria-label="Диалоги"></aside>
+  <section class="chatview">
+   <header class="chathead"><button class="cback" id="chatBack" type="button" aria-label="К списку диалогов">←</button><h2 id="chatTitle">Сообщения</h2><button class="vbtn" id="chatCall" type="button" hidden>📹 Видеозвонок</button><button class="x" id="chatClose" type="button" aria-label="Закрыть">✕</button></header>
+   <div class="msgs" id="msgs" aria-live="polite"></div>
+   <form class="chatform" id="chatForm" hidden><input id="chatInput" maxlength="1000" placeholder="Напишите сообщение..." autocomplete="off" aria-label="Сообщение"><button class="go" type="submit">Отправить</button></form>
+  </section>
+ </div>
+</dialog>
+
+<dialog id="reqDlg" aria-labelledby="reqTitle">
+ <form id="reqForm" novalidate>
+  <button class="x" type="button" id="reqClose" aria-label="Закрыть">✕</button>
+  <span class="k" id="reqCount"></span>
+  <h2 id="reqTitle"></h2>
+  <div id="reqBody"></div>
+  <label>Комментарий (необязательно)<textarea id="reqComment" maxlength="500" placeholder="Например, почему не подходит или когда удобно"></textarea></label>
+  <p class="err" id="reqErr" role="alert"></p>
+  <div class="reqbtns"><button type="button" id="reqLater">Решить позже</button><button type="button" id="reqNo">Отклонить</button><button type="button" id="reqYes">Принять</button></div>
+ </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<nav class="tabbar" id="tabbar" aria-label="Быстрая навигация">
+ <button type="button" id="tbSearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Поиск</span></button>
+ <button type="button" id="tbChat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12Z"/></svg><span>Сообщения</span><b id="tbChatCount" hidden></b></button>
+ <button type="button" id="tbBell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 16v-5a6 6 0 1 0-12 0v5l-2 2h16l-2-2Z"/><path d="M10 21h4"/></svg><span>Уведомления</span><b id="tbBellCount" hidden></b></button>
+ <button type="button" id="tbCab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Кабинет</span></button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
